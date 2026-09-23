@@ -60,6 +60,15 @@ The backend is a stub today — `/api/products` reads from Supabase once
 configured, and `/api/orders` is left unimplemented until you add a payment
 gateway (Razorpay is the common choice for India).
 
+## Deploying (Vercel Services)
+
+`vercel.json` at the project root is set up for [Vercel Services](https://vercel.com/docs/services), which builds the Next.js frontend and the FastAPI backend as one project on one domain:
+
+- `/` → the Next.js frontend
+- `/api/*` → the FastAPI backend (so `/api/products`, `/api/health`, etc. work with no CORS setup)
+
+Push the repo to Vercel, add your Supabase env vars in the project settings, and deploy — no separate backend hosting needed. Since routing happens through the top-level rewrites, the `allow_origins` list in `backend/main.py` is mostly a local-dev convenience; same-origin requests in production don't need it.
+
 ## What's intentionally not built yet
 
 - Real payments (checkout currently just clears the cart and shows a
