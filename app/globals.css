@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  border-color: theme("colors.ink" / 12%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: theme("colors.parchment");
+  color: theme("colors.ink");
+}
+
+::selection {
+  background-color: theme("colors.brass");
+  color: theme("colors.cream");
+}
+
+:focus-visible {
+  outline: 2px solid theme("colors.brass");
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.rule {
+  border-top: 1px solid theme("colors.ink" / 15%);
+}
+
+.container-page {
+  max-width: theme("maxWidth.content");
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container-page {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
